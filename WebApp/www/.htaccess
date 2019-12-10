@@ -1,0 +1,14 @@
+# dossier htaccess surcahrge la configuration par defaut
+
+#http://fliquizz.crm/questions/1
+
+# activation du moteur de réecriture de l url
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !favicon.ico$
+RewriteRule ^([a-zA-Z0-9\-/\.]+)([/]*)$ /index.php?url=$1 [L] 
+
+

@@ -1,0 +1,154 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --padding: 15px;
+    --display: inline-block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    color: var(--text-color);
+    background: var(--bg-color);
+    font: var(--text-color);
+}
+
+
+h1 {
+    ;
+}
+
+h2 {
+    ;
+}
+
+h3 {
+    ;
+}
+
+h4 {
+    ;
+}
+
+label {  
+    display: inline-block;
+	width: 200px;
+    text-align: center;
+    font-size: 16px;
+}
+
+::placeholder{
+    color: white;
+    font-size: 1em;
+    text-align: center;
+    text-shadow: 2px 1px 2px red, 2 0 1em blue, 2 0 0.2em red;
+}
+
+input {
+    padding: 20px 10px;
+    display: block;
+    width: 200px;
+    height: 80px;
+    margin-bottom: 1em;
+    border-radius: 10% / 50%;
+    font-size: 24px;
+    color: white;
+    /*color: greenyellow;*/
+    box-shadow: 1px 5px 1px lightslategrey;
+    background-image: url('london.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+
+button {
+    padding: 20px 10px;
+    display: block;
+    width: 200px;
+    height: 80px;
+    margin-bottom: 1em;
+    border-radius: 10% / 50%;
+    font-size: 24px;
+    /*background-color: #00247d;*/
+    color: white;
+    box-shadow: 1px 5px 1px lightslategrey;
+    background-image: url('black_flag.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+
+
+/*input[type="checkbox"] {
+    width: auto;
+    display: var(--display);
+}
+
+input[type="checkbox"]:checked {
+    width: auto;
+    display: var(--display);
+    background: lightblue; 
+}
+
+input[type="radio"]{
+    width: auto;
+    display: var(--display);
+}
+
+input[type="radio"]:checked{
+    width: auto;
+    display: var(--display);
+    background: lightblue; 
+}
+
+input[type="submit"]{
+  
+}
+
+input[type="button"]{
+
+}
+
+input[type="reset"]{
+
+}
+
+button[type="submit"]{
+
+}
+
+button[type="button"]{
+
+}
+
+button[type="reset"]{
+
+}
+
+section {
+
+}
+
+section+p {
+
+}
+
+article {
+
+}
+
+article+p {
+
+}*/
+
+
+
+
