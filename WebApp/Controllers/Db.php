@@ -1,1 +1,0 @@
-//instancier objet pdo avec users root sans mdp  co sur localhost

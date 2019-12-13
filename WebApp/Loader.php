@@ -4,7 +4,10 @@ class Loader
 {
     public static function autoload($classname)
     {
+        $classname = str_replace('\\', '/', $classname);
+
         $path = __DIR__.'/'.$classname.'.php';
+
 
         try 
         {

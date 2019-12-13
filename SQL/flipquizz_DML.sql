@@ -13,7 +13,7 @@ VALUES
 (1, 'Formateurs');
 
 INSERT INTO QUIZZ
-(quizz_id, quizz_name)
+(quizz_id, quizz_theme)
 VALUES
 (1, 'Quizz de Noël'),
 (2, 'Quizz du 3 janvier');
