@@ -14,7 +14,7 @@ class Db
         {
             try
             {
-                $dsn = 'mysql:host=localhost; port=3306; dbname=flipquizz; charset=utf8';           //dsn = data source name.
+                $dsn = 'mysql:host=localhost; port=3306; dbname=flipquiz; charset=utf8';           //dsn = data source name.
                 //$options = array();   ancienne syntaxe
                 $options = [
                     \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,        //message d'erreur et plantage du script si prob (requete) car co indispensable.(en production passe en silence)
@@ -22,9 +22,9 @@ class Db
                     \PDO::ATTR_EMULATE_PREPARES => false,                //desactive l'emulation des requetes preparées.(perf & secu)
                 ];
                 
-                Db::$instance = new \PDO($dsn, 'root', '', $options);
+                Db::$instance = new \PDO($dsn, 'crm', 'morgane', $options);
             }
-            catch(Exception $ex)
+            catch(\PDOException $ex)
             {
                 exit('Erreur SQl: '. $ex->getMessage());     //recupere le message //en production "$ex->getMessage"ne se met pas.
             }

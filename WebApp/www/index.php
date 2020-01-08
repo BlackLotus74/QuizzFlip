@@ -1,32 +1,29 @@
 <?php
 
+
 require_once '../Debug.php';
 require_once '../Loader.php';
 
 
 
-$router = new Router();
-debug($router);
+/*$router = new Router();
+debug($router);*/
 
-//$db = new Models\Db();   //separateur espace de nom pour autoload
+//$db = Models\Db::getDb();   //separateur espace de nom pour autoload
+//debug($Db);
 
-/*$db = Models\Db::getDb();
-debug($db);*/
+$quizzes = new Models\Quizzes();
+$quizzes->get(1);
+debug($quizzes);
 
-$result = Models\Quizzes::getQuizz(2);
+$quizzes->get(1);
+debug($quizzes);
+
+$cats = new Models\Categories();
+$result = $cats->getQuizCats(1);
 debug($result);
 
-/*$result = Models\Quizz::getQuizzes(1);
+$questions = new Models\Questions;
+$result = $questions->getCatQuestions(1);
 debug($result);
 
-$result = json_encode($result);  //convertion données en json
-debug($result);
-
-$result = Models\Categories::getCategories();
-debug($result);
-
-$result = Models\Questions::getQuestions();
-debug($result);
-
-$result = Models\Cat_Quiz::getCat_Quiz();
-debug($result);*/
