@@ -11,6 +11,11 @@ class Questions extends Model
         parent::__construct('fp_questions', 'question_id');
     }
 
+
+    /** recupere les questions d'une categorie à partir de son id
+     * @param $_cat_id l'identifiant a rechercher
+     * @return array|false $result Le résultat de la requete sous forme de tableau ou false si la requete echoue
+     */
     public function getCatQuestions(int $_cat_id) //fonction de recuperation dc debute tjs par get
     {
         try {
@@ -32,6 +37,7 @@ class Questions extends Model
             exit($e->getMessage());
         }
     }
+    
 
     /*public static function getQuestions()
     {

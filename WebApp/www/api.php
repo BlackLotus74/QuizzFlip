@@ -29,7 +29,7 @@ if(empty($mapping[$table])){             //4x plus rapide que array_key_exists
 
 $table = $mapping[$table];
 
-$table = new $table();
+$table = new $table();  //raccourci dynamique
 
 //debug($table);
 

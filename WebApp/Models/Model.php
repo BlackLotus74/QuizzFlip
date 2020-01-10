@@ -27,6 +27,7 @@ abstract class Model
         $this->primaryKey = $_pk;
         $this->pdo = Db::getDb(); //recupère la connexion PDO
     }
+    
 
     /** recupere toutes les lignes de la table courante
      * @return array $result le résultat de la requete
@@ -41,6 +42,7 @@ abstract class Model
 
         /* return $this->pdo->query("SELECT * FROM ".$this->tableName)->fetchAll()*/
     }
+
 
     /** recupere un élément de la table à partir de son identifiant
      * @param int $_id l'identifiant à rechercher

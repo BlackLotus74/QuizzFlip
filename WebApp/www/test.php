@@ -27,3 +27,6 @@ $questions = new Models\Questions;
 $result = $questions->getCatQuestions(1);
 debug($result);
 
+$quiz = new Models\Quizzes();
+$result = $quiz->getQuiz(2);
+debug($result);
