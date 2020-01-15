@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', function() {
     appVue = new Vue({
         el: '#vue',
         data: {
+            game: new Game(),
             pageTitle: 'Mon super titre',
             renderBody: 'Contenu de la page',
             year: 2020,
@@ -18,6 +19,6 @@ window.addEventListener('DOMContentLoaded', function() {
         appVue.isActive = !appVue.isActive;
     });
 
-    class 
+    
 
 });
