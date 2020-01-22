@@ -1,0 +1,131 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#vue{
+    /*position: relative;*/
+}
+
+body{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('union.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgb(194, 178, 178);
+    background-blend-mode: screen;
+}
+
+.team-Container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.quiz-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.categories-container{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-size: x-large;
+    margin-top: 4.78em;
+    text-transform: uppercase;
+}
+
+.questions-container{
+    background-color: rgba(61, 43, 226, .1);
+    margin: 0 auto;
+    width: 90vw;
+    height: 50vh;
+}
+
+.dispo_question{
+    padding-top: 40px;
+    margin: 30px 40px;
+}
+
+.btn-cat{
+    background-color: black;
+    color: #fff;
+    width: 40px;
+    height: 30px;
+    border-radius: 25%;
+}
+
+.btn{
+    /*background-color: blue;*/
+    border: 5px solid rgb(9, 0, 139);
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    font-size: large;
+}
+
+.btn span{
+    margin: 10px 10px;
+    font-size: 1.4em;
+}
+
+.btn .btnPlus, .btnMoins{
+    margin: 20px 20px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.team{
+    width: 250px;
+    margin: 10px;
+    padding: 1em;
+    border: 3px solid red;
+    border-radius: 50px 50px;
+    /*box-shadow: inset 5em 1.2em rgb(255, 255, 255);*/
+    background-image: url('union.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.team[data-id="1"] {
+    border-color: red;
+    background-color: lightcoral;
+    text-align: right;
+}
+
+.team[data-id="2"] {
+    border-color: blue;
+    background-color: lightblue;
+    text-align: right;
+}
+
+.team[data-id="3"] {
+    border-color: darkgreen;
+    background-color: lightgreen;
+    text-align: right;
+}
+
+.team[data-id="4"] {
+    border-color: orange;
+    background-color: rgb(255, 255, 134);
+    text-align: right;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+}

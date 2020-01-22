@@ -12,8 +12,9 @@ if($table === null){
 }
 
 $mapping = [
-    'categories' => 'Models\\Categories',
+    
     'quizzes' => 'Models\\Quizzes',
+    'categories' => 'Models\\Categories',
     'questions' => 'Models\\Questions'
 ];
 
