@@ -3,10 +3,6 @@
     margin: 0;
 }
 
-#vue{
-    /*position: relative;*/
-}
-
 body{
     position: relative;
     width: 100vw;
@@ -29,9 +25,18 @@ body{
 .quiz-container{
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    height: 10vh;
+}
+
+.btn-quiz{
+    width: 20vw;
+    height: 6vh;
+    padding-top: 19px;
+    font-size: 25px;
+    text-decoration: underline;
 }
 
 .categories-container{
@@ -41,7 +46,7 @@ body{
     align-items: center;
     justify-content: space-around;
     font-size: x-large;
-    margin-top: 4.78em;
+    margin-top: 3em;
     text-transform: uppercase;
 }
 
@@ -49,12 +54,22 @@ body{
     background-color: rgba(61, 43, 226, .1);
     margin: 0 auto;
     width: 90vw;
-    height: 50vh;
+    height: 60vh;    
 }
 
 .dispo_question{
-    padding-top: 40px;
-    margin: 30px 40px;
+    border: 2px solid black;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 20px;
+    width: 20vw;
+    margin: 30px 40px;  
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .btn-cat{
@@ -66,8 +81,7 @@ body{
 }
 
 .btn{
-    /*background-color: blue;*/
-    border: 5px solid rgb(9, 0, 139);
+    border: 2px solid rgb(9, 0, 139);
     display: inline-flex;
     flex-wrap: nowrap;
     align-items: center;

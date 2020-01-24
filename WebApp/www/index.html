@@ -38,7 +38,7 @@
             </div>
 
            <div class="quiz-container" v-if="game.teams.length > 0">
-               <p v-for="quiz in quizzes">
+               <p class="btn-quiz" v-for="quiz in quizzes">
                    <input type="radio" :id="quiz.quiz_id" :data-id="quiz.quiz_id" name="the_quiz" v-on:change="loadCategories">
                    <label for="">{{ quiz.quiz_theme }}</label>
                </p>
