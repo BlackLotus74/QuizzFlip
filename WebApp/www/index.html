@@ -8,13 +8,13 @@
     <title>Quiz Flip</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="js/Db.js"></script>
-    <script src="js/Quiz.js"></script>
     <script src="js/Question.js"></script>
+    <script src="js/Category.js"></script>
+    <script src="js/Quiz.js"></script>
     <script src="js/Team.js"></script>
     <script src="js/Game.js"></script>
-    
     <script src="js/app.js"></script>
-    
+
 </head>
 
 <body>
@@ -22,47 +22,44 @@
     <div id="vue">
 
         <header>
-            <h1></h1>
+            <h1>{{ game.quiz.quiz_theme }}</h1>
         </header>
 
         <main>
-            <div class="btn">
+            <div class="btn" v-if="!game.started">
                 <button class="btnMoins" v-if="game.teams.length > 0" v-on:click="deleteTeam()">-</button>
                 <button class="btnPlus" v-if="game.teams.length < 4" v-on:click="addTeam()">+</button>
             </div>
 
             <div class="team-Container">
-                <article class="team" :data-id="team.id" v-for="team in game.teams"> <!--le avec valeur-->
+                <article class="team" :data-id="team.id" v-for="team in game.teams">
+                    <!--le avec valeur-->
                     {{ team.name }}<br> {{ team.score }}
                 </article>
             </div>
 
-           <div class="quiz-container" v-if="game.teams.length > 0">
-               <p class="btn-quiz" v-for="quiz in quizzes">
-                   <input type="radio" :id="quiz.quiz_id" :data-id="quiz.quiz_id" name="the_quiz" v-on:change="loadCategories">
-                   <label for="">{{ quiz.quiz_theme }}</label>
-               </p>
-           </div>
+            <div class="quiz-container" v-if="game.teams.length > 0 & !game.started">
+                <p class="btn-quiz" v-for="quiz in quizzes">
+                    <input type="radio" :id="quiz.quiz_id" :data-id="quiz.quiz_id" name="the_quiz"
+                        v-on:change="loadCategories">
+                    <label for="">{{ quiz.quiz_theme }}</label>
+                </p>
+            </div>
 
-           <div class="categories-container" v-if="game.teams.length > 0">
-               <p v-for="category in categories">
-                   <input class="btn-cat" value="clic" type="button" :id="category.category_id" :data-id="category.category_id" name="the_categories" v-on:click="loadQuestions">
-                   <label for="clic">{{ category.category_name }}</label>
-               </p>
-           </div>
+            <div class="category-container" v-if="game.quiz.categories.length > 0 & !game.started">
+                <p v-for="category in game.quiz.categories">
+                    {{ category.category_name }}
+                </p>
+                <div>
+                    <button >Start Quiz</button>
+                </div>
+            </div>
 
-           <div class="questions-container" >
-               <p class="dispo_question" v-for="question in questions">
-                   {{ question.question_content }}
-               </p>
-           </div>
-
-
-            <!--<button id="btn">CLICK ME</button>
-            <br>
-            <input v-model="pageTitle">
-            <br>
-            <input v-model="year">-->
+            <div class="questions-container" v-if=!game.started>
+                <p class="dispo_question" v-for="question in questions">
+                    {{ question.question_content }}
+                </p>
+            </div>
 
         </main>
 

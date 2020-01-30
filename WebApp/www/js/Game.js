@@ -2,6 +2,7 @@ Game = function() {
 
     this.teams = [];
     this.quiz = new Quiz();
+    this.started = false;
     
     this.addTeam = function() {
         let _id = this.teams.length + 1;

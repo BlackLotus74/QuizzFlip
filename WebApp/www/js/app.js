@@ -4,8 +4,8 @@ window.addEventListener('DOMContentLoaded', function () {
         el: '#vue',
         data: {
             quizzes: [],
-            categories: [],
             questions: [],
+            //categories: [],
             game: new Game(),
             //message: '',
         },
@@ -33,18 +33,35 @@ window.addEventListener('DOMContentLoaded', function () {
             },
 
             loadCategories: function(event) {
+                /*for (var myQuiz of this.quizzes) {                  //foreach JS
+                    if (myQuiz.quiz_id == event.target.dataset.id) {
+                        this.game.quiz.fill(myQuiz);                  //method class quiz - alimente quiz dans game
+                        break;
+                    }
+                }*/
+                var quiz = this.quizzes.find(myQuiz => myQuiz.quiz_id == event.target.dataset.id); //meme chose que dessus
+                this.game.quiz.fill(quiz);
+
                 var db = new Db();
                 db.loadCategories(event.target.dataset.id, this.getCategories); //recupere dans data-quelquechose
+            },
+
+            getCategories: function(_db) {        //appele par callback /!\
+
+                /*for(var cat of _db.categories) {
+                    var newCat = new Category();
+                    newCat.fill(cat);
+                    this.game.quiz.categories.push(newCat);
+                }*/
+
+                this.game.quiz.categories = _db.categories.map(item => new Category().fill(item)); //traitement sur chaque item
+
+                console.log("App Categories loaded");
             },
 
             loadQuestions: function(event) {
                 var db = new Db();
                 db.loadQuestions(event.target.dataset.id, this.getQuestions);
-            },
-
-            getCategories: function(_db) {                //appele par callback /!\
-                this.categories = _db.categories;
-                console.log(this.categories);
             },
 
             getQuestions: function(_db) {
