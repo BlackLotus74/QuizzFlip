@@ -12,12 +12,17 @@ $username = 'moi';
 $password = 'toi';
 $email = 'moi@vous.net';
 
-$test3 = new Models\AccountManager();
-//$result = $test->getUser($username);
-//$result = $test2->login($username, $password);
-$result = $test3->addUser($username, $password, $email);
+//$test4 = new Models\AccountManager();
+//$result = $test4->getUser('Mike');
+//$result = $test2->login('Mike', 'hjkhdjkfhjdfk');
+//$result = $test2->addUser($username, $password, $email);
+//$result = $test4->removeUser('moi');
 
-debug($result);
+//debug($result);
+
+$accounts = new Models\AccountManager();
+$accounts->addUser('pouet2', 'coucou', 'je@jdshfjsd.fr');
+debug($accounts);
 
 
 

@@ -16,8 +16,16 @@ class AccountManager
 
         if (\is_file($this->filePath)) {                        //is_file = verifie existence d'un fichier
             $this->accounts = (require $this->filePath);        //renvoie la valeur envoyer par require grace au "return" (tableau dans account)
-
         }
+    }
+
+    public function save()
+    {
+        $content = '<?php return ';
+        $content .= var_export($this->accounts, true);
+        $content .= ';';
+
+        \file_put_contents($this->filePath, $content);
     }
 
     /**
@@ -40,11 +48,9 @@ class AccountManager
     public function getUser(string $_username): ?Account
     {
         $_username = \basename($_username);  //basename = que la derniere partie
-
-        if(!$this->validUsername($_username)) {
+        if (!$this->validUsername($_username)) {
             return null;
         }
-
         foreach ($this->accounts as $key => $user) {
             if ($user['username'] === $_username) {
                 return new Account($user);
@@ -55,19 +61,30 @@ class AccountManager
 
 
 
+    /** retourne la collection d'users (crée une copie)
+     * @return array la collection d'users
+     */
+    public function getAccounts() : array{
+        return $this->accounts;
+    }
+
+
+
     /**
      * verifie si un utilisateur $_username existe et controle la correspondance des mots de passe 
      * renvoie true en cas de succes et false en cas d'erreur
      */
     public function login($_username, $_password): bool        //definie type de retour
     {
-        if(!$this->validUsername($_username)) {
+        $_username = \basename($_username);  //basename = que la derniere partie
+
+        if (!$this->validUsername($_username)) {
             return null;
         }
 
         if (!empty($_username)) {
             foreach ($this->accounts as $propertyName => $propertyValue) {
-                if ($propertyValue['password'] == $_password) {
+                if ($propertyValue['password'] === $_password) {
                     return true;
                 }
             }
@@ -81,13 +98,14 @@ class AccountManager
      * @param string $_username le nom dutilisateur a tester
      * @return bool true si le nom est valide. false sinon.
      */
-    public function validUsername(string $_username) : bool {
+    public function validUsername(string $_username): bool
+    {
 
-        if (empty($_username)) {  
-            return false;   
+        if (empty($_username)) {
+            return false;
         }
 
-        if(strlen($_username) < 3) {
+        if (strlen($_username) < 3) {
             return false;
         }
 
@@ -102,26 +120,21 @@ class AccountManager
      */
     public function addUser($_username, $_password, $_email): bool
     {
-        if(!$this->validUsername($_username)) {
-            return null;
-        }
 
-        $newUser = [
-            'username' => $_username,
-            'password' => $_password,
-            'email' => $_email,
-        ];
-
-        if (!empty($_username)) {
-            foreach ($this->accounts as $user) {             //$user = toutes les 'valeur-name' du second tableau
-                if ($user['username'] !== $_username) {
-                    $this->accounts[] = $user;
-                    var_dump($newUser);
-                    return true;
-                }
-            }
+        if (!$this->validUsername($_username)) {
             return false;
         }
+        if ($this->getUser($_username) !== null) {
+            return false;
+        }
+        $newUser = [
+            'username' => $_username,
+            'password' => \password_hash($_password, PASSWORD_BCRYPT),
+            'email' => $_email,
+        ];
+        $this->accounts[] = $newUser;
+        $this->save();
+        return true;
     }
 
     /**
@@ -131,14 +144,15 @@ class AccountManager
      */
     public function removeUser($_username): bool
     {
-        if(!$this->validUsername($_username)) {
+
+        if (!$this->validUsername($_username)) {
             return null;
         }
-        
+
         if (!empty($_username)) {
             foreach ($this->accounts as $user) {
-                if ($user['username'] == $_username) {
-
+                if ($user['username'] === $_username) {
+                    unset($user);
                     return true;
                 }
             }
