@@ -2,13 +2,29 @@
 
 namespace Models;
 
+/**
+ * classe Model: représente une table
+ */
 abstract class Model 
 {
-    /** @var PDO $db */
+    /** @var PDO $db reprsente une connexion vers une base de donnée*/
     protected $db;
-    public function __construct()
+
+    /** @var string $tableName Le nom de la table */
+    protected $tableName;
+
+    /** @var string $primaryKey Le nom de la clé primaire de la table */
+    protected $primaryKey;
+
+
+    /** recupere toutes les lignes de la table courante
+     * @return array $result le resultat d ela requete
+     */
+    public function __construct(string $_table, string $_pk)
     {
-        $this->db = Db::getDb();
+        $this->tableName = $_table;
+        $this->primaryKey = $_pk;
+        $this->pdo = Db::getDb(); //recupere la connexion pdo
     }
 
     public function query(string $sql, array $values = [])
