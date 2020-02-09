@@ -1,28 +1,61 @@
+<?php
+session_start();
+
+if(empty($_SESSION['user'])) {
+    header('location: login.php');
+    exit;
+}
+
+require_once dirname(__DIR__, 2).'/Loader.php';
+require_once dirname(__DIR__, 2).'/Debug.php';
+
+$accounts = new Models\AccountManager;
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>FlipQuiz Admin</title>
+        <link rel="stylesheet" href="../css/manage.css">
+        <script src="../js/manage.js"></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <body>
+        <header>
+            <h1>Quiz Administration</h1>
+            <aside>Welcome <?=$_SESSION['user'] ?? 'Anonymous'; ?> (<a href="login.php?logout=1">logout</a>)</aside>
+        </header>
+        <nav>
+            <ul class="menu">
+                <li><a href="?">Dashboard</a></li>
+                <li><a href="?page=users">Users</a></li>
+                <li><a href="?page=quizzes">Quizzes</a></li>
+                <li><a href="index.php?page=categories">Categories</a></li>
+                <li><a href="index.php?page=questions">Questions</a></li>
+            </ul>
+        </nav>
 
-<body>
-    <header>
-        <h1>Quiz Administration</h1>
-    </header>
+        <main>
+            <?php
+                $page = !empty($_GET['page']) ? $_GET['page'] : 'home'; // ternaire
+                // $page = $_GET['page'] ?? 'home'; // null Coalescing operator (equivalent du ternaire ci-dessus)
 
-    <nav>
-        <ul><a href="">Profile</a></ul>
-        <ul><a href="">Quizzes</a></ul>
-        <ul><a href="">Categories</a></ul>
-        <ul><a href="">Questions</a></ul>
-    </nav>
+                $page = ($page === 'index') ? 'home' : $page; // si $page est égal à 'index', on remplace sa valeur par 'home'
 
-    <main>
+                $page = basename($page); // supprime toute notion de chemin dans la valeur de $page
 
-    </main>
+                // $page = ($page.'.php');
+                $page .= '.php'; // on ajoute .php à la valeur de $page
+                
+                // echo $page;
 
-</body>
-
+                if(is_file($page)) { // vérification de l'existance du fichier
+                    require $page;
+                }
+                else {
+                    echo 'La page demandée n\'existe pas !';
+                }
+            ?>
+        </main>
+    </body>
 </html>
