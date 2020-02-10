@@ -7,16 +7,34 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+require_once dirname(__DIR__, 2).'/Loader.php';
+require_once dirname(__DIR__, 2).'/Debug.php';
 
-<body>
-    <header>
-        <h1>Quiz Administration</h1>
-    </header>
+$accounts = new Models\AccountManager;
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>FlipQuiz Admin</title>
+        <link rel="stylesheet" href="../css/manage.css">
+        <script src="../js/manage.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <h1>Quiz Administration</h1>
+            <aside>Welcome <?=$_SESSION['user'] ?? 'Anonymous'; ?> (<a href="login.php?logout=1">logout</a>)</aside>
+        </header>
+        <nav>
+            <ul class="menu">
+                <li><a href="?">Dashboard</a></li>
+                <li><a href="?page=users">Users</a></li>
+                <li><a href="?page=quizzes">Quizzes</a></li>
+                <li><a href="index.php?page=categories">Categories</a></li>
+                <li><a href="index.php?page=questions">Questions</a></li>
+            </ul>
+        </nav>
 
     <nav>
         <ul class="menu">
@@ -48,4 +66,13 @@
     </main>
 </body>
 
+                if(is_file($page)) { // vérification de l'existance du fichier
+                    require $page;
+                }
+                else {
+                    echo 'La page demandée n\'existe pas !';
+                }
+            ?>
+        </main>
+    </body>
 </html>
