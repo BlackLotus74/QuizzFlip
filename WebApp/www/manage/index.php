@@ -1,10 +1,11 @@
 <?php
-session_start();
+    session_start();
+    require_once dirname(__DIR__, 2) . '/Loader.php';  //dirname — Renvoie le chemin du dossier parent
+    require_once dirname(__DIR__, 2) . '/Debug.php';
+?>
 
-if(empty($_SESSION['user'])) {
-    header('location: login.php');
-    exit;
-}
+<!DOCTYPE html>
+<html lang="en">
 
 require_once dirname(__DIR__, 2).'/Loader.php';
 require_once dirname(__DIR__, 2).'/Debug.php';
@@ -35,19 +36,35 @@ $accounts = new Models\AccountManager;
             </ul>
         </nav>
 
-        <main>
-            <?php
-                $page = !empty($_GET['page']) ? $_GET['page'] : 'home'; // ternaire
-                // $page = $_GET['page'] ?? 'home'; // null Coalescing operator (equivalent du ternaire ci-dessus)
+    <nav>
+        <ul class="menu">
+            <li><a href="?page=users">Profile</a></li>
+            <li><a href="?page=quizzes">Quizzes</a></li>
+            <li><a href="index.php?page=categories">Categories</a></li>
+            <li><a href="index.php?page=questions">Questions</a></li>
+        </ul>
+    </nav>
 
-                $page = ($page === 'index') ? 'home' : $page; // si $page est égal à 'index', on remplace sa valeur par 'home'
+    <main>
+        <?php
 
-                $page = basename($page); // supprime toute notion de chemin dans la valeur de $page
+        $page = !empty($_GET['page']) ? $_GET['page'] : 'home';
+        //$page = $_GET['page'] ?? 'home';      // null coalescing operator
 
-                // $page = ($page.'.php');
-                $page .= '.php'; // on ajoute .php à la valeur de $page
-                
-                // echo $page;
+        $page = ($page . '.php');
+        //$page .= '.php';
+        echo $page;
+
+        if (is_file($page)) {  //verification de l'existance du fichier, le colle à cet endroit du code.
+            require $page;
+        } else {
+            echo 'message d\'erreur !';
+        }
+
+        ?>
+
+    </main>
+</body>
 
                 if(is_file($page)) { // vérification de l'existance du fichier
                     require $page;

@@ -3,7 +3,6 @@
 <h2>User List</h2>
 
 <?php
-    require_once dirname(__DIR__, 2).'/Loader.php';  //dirname — Renvoie le chemin du dossier parent
 
     $accounts = new Models\AccountManager();
 
