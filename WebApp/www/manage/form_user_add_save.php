@@ -10,7 +10,7 @@ if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['emai
     $_SESSION['error'] = 'Le formulaire est incomplet';
 
     header('location: form_user_add.php?'.$_SESSION['error']);
-    exit();
+    exit;
 }
 
 $username = basename($_POST['username']);

@@ -12,7 +12,7 @@ class Quizzes extends Model
 
     public function getLatest() 
     {
-        return $this->pdo->query("SELECT * FROM" .$this->tableName. "ORDER BY" .$this->primaryKey. "DESC LIMIT 1;")->fetch();   //fetch()?????????????
+        return $this->pdo->query("SELECT * FROM " .$this->tableName." ORDER BY ".$this->primaryKey. " DESC LIMIT 1;")->fetch();   //fetch()?????????????
     }
 }
 

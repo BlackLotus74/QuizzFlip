@@ -14,18 +14,6 @@
 
 <h2>Add user</h2>
 
-<?php
-    session_start();
-    
-    if(!empty($_SESSION['error'])) {
-        echo $_SESSION['error'];
-        $_SESSION['error'] = null;
-    }
-    if(!empty($_SESSION['sucess'])) {
-        echo $_SESSION['sucess'];
-        $_SESSION['sucess'] = null;
-    }
-?>
 
 
 <form method="POST" action="form_user_add_save.php">
