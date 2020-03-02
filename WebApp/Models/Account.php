@@ -23,7 +23,7 @@ class Account
                           //on parcour l'objet
                 if(\array_key_exists($propertyName, $_user)) {
 
-                    $this->{$propertyName} = $_user[$propertyName];                     //si correspondance dans tableau on remplit                
+                    $this->{$propertyName} = $_user[$propertyName];     //si correspondance dans tableau on remplit                
                 }
             }
         }

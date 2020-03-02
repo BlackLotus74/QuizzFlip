@@ -2,14 +2,6 @@
 session_start();
 require_once dirname(__DIR__, 2) . '/Loader.php';  //dirname — Renvoie le chemin du dossier parent
 require_once dirname(__DIR__, 2) . '/Debug.php';
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<?php
-require_once dirname(__DIR__, 2) . '/Loader.php';
-require_once dirname(__DIR__, 2) . '/Debug.php';
 
 $accounts = new Models\AccountManager;
 ?>
